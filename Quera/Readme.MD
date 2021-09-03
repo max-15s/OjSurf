@@ -13,3 +13,4 @@
 |[4065](https://quera.ir/problemset/contest/4065)|ad-hoc||
 |[3405](https://quera.ir/problemset/contest/3405)|ad-hoc ||
 |[3414](https://quera.ir/problemset/contest/3414)|ad-hoc||
+|[3538](https://quera.ir/problemset/contest/3538)|ad-hoc||
