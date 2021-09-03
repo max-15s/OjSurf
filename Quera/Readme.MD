@@ -10,4 +10,4 @@
 |[3409](https://quera.ir/problemset/contest/3409)|ad-hoc|maybe array|
 |[10325](https://quera.ir/problemset/contest/10325)| ad-hoc |Be aware of presentation error|
 |[10162](https://quera.ir/problemset/contest/10162)|ad-hoc ||
-|[4065](https://quera.ir/problemset/contest/4065)|||
+|[4065](https://quera.ir/problemset/contest/4065)|ad-hoc||
