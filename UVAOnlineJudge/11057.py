@@ -3,46 +3,44 @@
 # cost of a book < 1000001
 # M an integer which is amount of money
 # there is a blank line after each case and an EOF at the end
+# find i and j where i < j and they cost exactly M
 while True:
     try:
         N = int(input())
-        weights = [int(i) for i in input().split()]
-        M = int(input())
-        K = list()
-        for i in range(N+1):
-            K.append(
-                [0 for _ in range(M+1)]
-            )
-            for w in range(M+1):
-                if i == 0 or w == 0:
-                    K[i][w] = 0
-                elif weights[i-1] <= w:
-                    K[i][w] = max(weights[i-1] + K[i-1][w-weights[i-1]], K[i-1][w])
-                else:
-                    K[i][w] = K[i-1][w]
-        w = M
-        included_items = list()
-        for i in range(len(K), 0, -1):
-            if res <= 0:
-                break
-            # either the result comes from the
-            # top (K[i-1][w]) or from (val[i-1]
-            # + K[i-1] [w-wt[i-1]]) as in Knapsack
-            # table. If it comes from the latter
-            # one/ it means the item is included.
-            if res == K[i - 1][w]:
-                continue
+        tmp = [int(i) for i in input().split()]
+        tmp.sort()
+
+        values = dict()
+        for i in tmp:
+            if i in values:
+                values[i] += 1
             else:
+                values[i] = 1
 
-                # This item is included.
-                included_items.append(str(weights[i - 1]))
+        M = int(input())
 
-                # Since this weight is included
-                # its value is deducted
-                res = res - weights[i - 1]
-                w = w - weights[i - 1]
+        results = list()
+        for first in tmp:
+            second = M - first
+            if second in values:
+                if first != second:
+                    results.append(
+                        (first, second)
+                    )
+                else:
+                    if values[second] > 1:
+                        results.append(
+                            (first, second)
+                        )
 
-        print(' '.join(reversed(included_items)), f'sum:{sum(map(int, included_items))}')
+        answer = results[0]
+        min_diff = abs(results[0][1] - results[0][0])
+        for item in results:
+            if min_diff > abs(item[1] - item[0]):
+                min_diff = abs(item[1] - item[0])
+                answer = (min(item), max(item))
+        print(f"Peter should buy books whose prices are {answer[0]} and {answer[1]}.\n")
+        _ = input()  # throw away
 
     except EOFError:
         break
